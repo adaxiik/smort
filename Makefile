@@ -4,6 +4,3 @@ NAME = main
 
 $(NAME): *.cpp
 	$(CC) $(CFLAGS) *.cpp -o $(NAME)
-
-run: $(NAME)
-	./$(NAME)

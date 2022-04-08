@@ -24,7 +24,7 @@ with open('output.txt', 'r') as f:
 
 plt.plot([p['x'] for p in input], [p['y'] for p in input], 'ro', label='input')
 plt.plot([p['x'] for p in output], [p['y'] for p in output], 'bo', label='output')
-#show grid
+
 plt.grid(True)
 plt.legend()
 plt.show()
