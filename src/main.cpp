@@ -1,4 +1,4 @@
-#include "NetworkManager.hpp"
+#include "network/NetworkManager.hpp"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -29,8 +29,8 @@ float CalculateError(float expected, float actual)
 }
 float fn(float x)
 {
-    //return (x) / (sqrt(1 + pow(x, 2)));
-    return sinf(x);
+    return (x) / (sqrt(1 + pow(x, 2)));
+    // return sinf(x);
 }
 Input GetInput(){
     Input i;
@@ -106,7 +106,7 @@ int main(int argc, char const *argv[])
 
     //std::vector<Input> inputs = LoadInputFromFile("testdata.txt");
     NetworkManager *manager = new NetworkManager(50, {1, 5,5,5, 1});
-    Network *net = train(manager, 1000,1000);
+    Network *net = train(manager, 100,1000);
     std::cout << "Sampling" << std::endl;
     //SampleNetwork(net, -3, 3, 0.01);
     SampleNetwork(net, 1000);

@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from math import sin,sqrt,cos
 import random
 def fn(x):
-    #return (x)/(sqrt(1+((x)**2)))
-    return sin(x)
+    return (x)/(sqrt(1+((x)**2)))
+    # return sin(x)
     
 
 
