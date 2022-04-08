@@ -7,7 +7,6 @@ private:
     float bias;
     std::vector<float> weights;
     float output;
-    float error;
 public:
     Neuron(int numInputs,bool input);
     Neuron(Neuron* neuron);

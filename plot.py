@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import matplotlib.pyplot as plt
-from math import sin,sqrt,cos
+from math import sin,sqrt,cos,log
 import random
 def fn(x):
-    return (x)/(sqrt(1+((x)**2)))
-    # return sin(x)
+    # return (x)/(sqrt(1+((x)**2)))
+    return sin(x)
+    # return x*x
     
 
 

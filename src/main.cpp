@@ -29,13 +29,16 @@ float CalculateError(float expected, float actual)
 }
 float fn(float x)
 {
-    return (x) / (sqrt(1 + pow(x, 2)));
-    // return sinf(x);
+    // return (x) / (sqrt(1 + pow(x, 2)));
+    return sinf(x);
+    //return x*x;
 }
 Input GetInput(){
     Input i;
     //generate float input [-3,3]
     i.input = (float)((float)rand()/(float)RAND_MAX)*6 - 3;
+    //generate float input [-2,2]
+    //i.input = (float)((float)rand()/(float)RAND_MAX)*4 - 2;
     i.expected = fn(i.input);
     return i;
 }
@@ -45,10 +48,12 @@ Network *train(NetworkManager* manager, size_t iterations,size_t inputs)
     
     for (size_t i = 0; i < iterations; i++)
     {
+        #pragma omp parallel for
         for (size_t j = 0; j < manager->GetPopulationSize(); j++)
         {
             Network *net = manager->GetNetwork(j);
             float averageError = 0;
+
             for (size_t k = 0; k < inputs; k++)
             {
 
@@ -105,8 +110,8 @@ int main(int argc, char const *argv[])
     srand(time(NULL));
 
     //std::vector<Input> inputs = LoadInputFromFile("testdata.txt");
-    NetworkManager *manager = new NetworkManager(50, {1, 5,5,5, 1});
-    Network *net = train(manager, 100,1000);
+    NetworkManager *manager = new NetworkManager(20, {1, 5,5,5, 1});
+    Network *net = train(manager, 500,1000);
     std::cout << "Sampling" << std::endl;
     //SampleNetwork(net, -3, 3, 0.01);
     SampleNetwork(net, 1000);

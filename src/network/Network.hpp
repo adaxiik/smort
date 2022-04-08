@@ -9,7 +9,6 @@ private:
     //std::vector<float> outputs;
     //std::vector<float> inputs;
     std::vector<float> GetLayerOutputs(size_t index);
-    float error;
     float learningRate;
     float fitness;
 

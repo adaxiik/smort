@@ -26,8 +26,10 @@ Neuron::~Neuron()
 
 float Neuron::GetOutput()
 {
-	return std::max(0.0f, this->output);
-	//return this->output;
+	//return std::max(0.0f, this->output); //ReLU
+	//return 1/(1+exp(-this->output)); //Sigmoid
+	//return this->output/sqrt(1+pow(this->output, 2)); //Tanh
+	return std::max(0.1f*this->output, this->output); //ReLU
 }
 
 float Neuron::GetOutputFull()
@@ -43,7 +45,7 @@ void Neuron::CalculateOutput(std::vector<float> inputs)
 		sum += this->weights[i] * inputs[i];
 	}
 	sum += this->bias;
-	this->output = sum; // ReLU
+	this->output = sum; 
 }
 void Neuron::Mutate()
 {
